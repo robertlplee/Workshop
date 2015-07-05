@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+lessons = Lesson.create([
+	{
+		StartTime: DateTime.new(2015,9,1,17,00),
+		EndTime: DateTime.new(2015,9,1,18,00),
+		location: "New York City",
+		category: "Arts",
+		subject: "Painting",
+		price: 5.00,
+		capacity: 20,
+		description: "Expect nude models",
+		langauge: "body langauge"
+	}])
