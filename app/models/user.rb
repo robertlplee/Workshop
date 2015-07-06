@@ -10,9 +10,8 @@ class User < ActiveRecord::Base
   # :role
   # user == 0
   # admin == 1
-  # editor == 2
   # rails generate migration AddRoleToUser Role:integer 
   # Rake db:migrate
-  # enum role: [:user, :admin, :editor]
+  enum role: [:user, :admin]
   # user.update role: 1
 end
