@@ -1,8 +1,7 @@
 class LessonsController < ApplicationController
 	
 	before_action :authenticate_user!
-	# before_action:auhtorize_admin!,  only: [:new, :create, :destory]
-	# before_action :autorize_edito_or_admin!, only: [:]
+	# before_action :authorize_admin!, only: [:]
 	
 	# def authorize_admin!
 	# =>unless current_user.admin?
@@ -31,9 +30,8 @@ class LessonsController < ApplicationController
 
 	def create
 		@lesson = current_user.lessons.build(lesson_params)
-		@lesson.user = current_user
-		binding.pry
-		
+		@lesson.host = current_user
+
 		if @lesson.save
 			redirect_to @lesson
 		else
@@ -42,11 +40,10 @@ class LessonsController < ApplicationController
 	end
 
 	def edit
-		# if current_user == @lesson.user
-			@lesson = Lesson.find(params[:id])
-		# else
-			# redirect_to :root, alert: "Only the host can edit the workshop information"
-		# end
+		@lesson = Lesson.find(params[:id])
+		unless current_user == @lesson.host
+			redirect_to :root, alert: "Only the host can edit the workshop information"
+		end
 	end
 
 	def update
@@ -61,6 +58,9 @@ class LessonsController < ApplicationController
 
 	def destroy
 		@lesson = Lesson.find(params[:id])
+		unless current_user == @lesson.host
+			redirect_to :root, alert: "Only the host can edit the workshop information"
+		end
 		@lesson.destroy
 		redirect_to @lesson
 	end
@@ -71,5 +71,8 @@ class LessonsController < ApplicationController
 		:category, :name, :price, :capacity, :description, :language, :user_id)
 	end
 
+	def has_permission(lesson)
+		current_user == lesson.host 
+	end
 
 end

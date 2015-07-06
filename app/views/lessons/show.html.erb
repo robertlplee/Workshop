@@ -1,5 +1,5 @@
 <h1><%= @lesson.name %></h1>
-<h2> Hosted by: <%=@lesson.host%></h2>
+<h2> Hosted by: <%=@lesson.host.email%></h2>
 
 <p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.location%>.</p>
 <p>
@@ -7,11 +7,13 @@
     <%=@lesson.description%>
 </p>
 
-<%= link_to "Edit workshop details", edit_lesson_path %>
+<% if current_user == @lesson.host %>
+    <%= link_to "Edit workshop details", edit_lesson_path %> | 
 
-<%= link_to 'Destroy', lesson_path(@lesson),
+    <%= link_to 'Destroy', lesson_path(@lesson),
 				method: :delete, 
-				data: { confirm: 'Are you sure?' } %>
+				data: { confirm: 'Are you sure?' } %> | 
+<% end %>
+
 <%= link_to 'Back to Lessons', lessons_path %>
-				
 				

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :lessons
+  resources :lessons do
+    resources :comments
+  end
   
   
   

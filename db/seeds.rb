@@ -16,5 +16,8 @@ lessons = Lesson.create([
 		price: 5.00,
 		capacity: 20,
 		description: "Expect nude models",
-		langauge: "body langauge"
+		langauge: "body langauge",
+		host_id: 1
 	}])
+
+
