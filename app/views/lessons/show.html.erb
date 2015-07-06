@@ -9,7 +9,7 @@
 
 <%= render '/comments/form' %>
 <h2>Comments:</h2>
-<%= render 
+<%= render @lesson.comments %>
 <% link_to 'Back', lessons_path %>
 <% if current_user == @lesson.host %>
     <%= link_to "Edit workshop details", edit_lesson_path %> | 
