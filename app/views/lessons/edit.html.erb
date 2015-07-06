@@ -1,0 +1,10 @@
+<h1> Edit Workshop </h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Delete This Workshop', lesson_path(@lesson)
+  method: :delete,
+  data: {confirm: 'Are you sure you want to delete this workshop?'} 
+%>
+
+<%= link_to 'Back to Lessons', @lesson %>

@@ -5,11 +5,12 @@ class CreateLessons < ActiveRecord::Migration
       t.datetime :EndTime
       t.string :location
       t.string :category
-      t.string :subject
+      t.string :name
       t.float :price
       t.integer :capacity
       t.text :description
       t.string :langauge
+      t.references :host
 
       t.timestamps null: false
     end
