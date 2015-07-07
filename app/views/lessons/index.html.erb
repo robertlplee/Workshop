@@ -1,8 +1,8 @@
 <h1>All workshops</h1>
 
-
+<p><%=link_to "Host a new workshop", new_lesson_path%></p>
 
 <% @lessons.each do |lesson| %>
-	<h2><%= lesson.subject %></h2>
+	<h2><%=link_to lesson.name, lesson_path(lesson)%></h2>
 	<p><%= lesson.description %></p>
 <% end %>

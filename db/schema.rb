@@ -11,20 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705132427) do
+ActiveRecord::Schema.define(version: 20150706162646) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.datetime "timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "lesson_id"
+  end
+
+  add_index "comments", ["lesson_id"], name: "index_comments_on_lesson_id"
 
   create_table "lessons", force: :cascade do |t|
     t.datetime "StartTime"
     t.datetime "EndTime"
     t.string   "location"
     t.string   "category"
-    t.string   "subject"
+    t.string   "name"
     t.float    "price"
     t.integer  "capacity"
     t.text     "description"
     t.string   "langauge"
+    t.integer  "host_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "lessons_users", id: false, force: :cascade do |t|
+    t.integer "user_id",   null: false
+    t.integer "lesson_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +57,7 @@ ActiveRecord::Schema.define(version: 20150705132427) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

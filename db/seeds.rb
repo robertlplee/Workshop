@@ -12,9 +12,12 @@ lessons = Lesson.create([
 		EndTime: DateTime.new(2015,9,1,18,00),
 		location: "New York City",
 		category: "Arts",
-		subject: "Painting",
+		name: "Painting",
 		price: 5.00,
 		capacity: 20,
-		description: "Expect nudeloca models",
-		langauge: "body langauge"
+		description: "Expect nude models",
+		langauge: "body langauge",
+		host_id: 1
 	}])
+
+

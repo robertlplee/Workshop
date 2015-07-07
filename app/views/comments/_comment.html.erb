@@ -1,0 +1,21 @@
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %> 
+</p>
+
+
+<p>
+  <%= link_to 'Edit Comment', edit_lesson_comment_path(comment.lesson, comment) %>
+</p>
+
+
+<p>
+  <%= link_to 'Destroy Comment', [comment.lesson, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
