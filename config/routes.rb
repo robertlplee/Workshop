@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   
+  resources :charges
   
   
   root "welcome#index"
