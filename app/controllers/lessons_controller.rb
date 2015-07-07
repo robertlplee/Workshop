@@ -93,6 +93,15 @@ class LessonsController < ApplicationController
   			end
   		end
 
+	def add_student
+		@lesson = Lesson.find(params[:id])
+		@lesson.users << current_user
+		redirect_to @lesson
+		# if @lesson.user.create(params[current_user][@lesson])
+  #  			flash[:notice] = 'You have been added to this workshop.'
+		# end
+	end
+
 	private 
 	def lesson_params
 		params.require(:lesson).permit(:StartTime, :EndTIme, :location,

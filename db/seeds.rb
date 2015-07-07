@@ -18,8 +18,20 @@ lessons = Lesson.create([
 		description: "Expect nude models",
 		langauge: "body langauge",
 		host_id: 1
+	}, {
+		StartTime: DateTime.new(2014,9,1,13,00),
+		EndTime: DateTime.new(2015,9,1,15,00),
+		location: "Hong Kong",
+		category: "Sports",
+		name: "Soccer",
+		price: 0,
+		capacity: 16,
+		description: "Bring cleats!",
+		langauge: "English",
+		host_id: 2
 	}])
 
 Place.create(name:'Home',address: '3893 Old Creek Rd, Troy, MI, 48084')
+
 
 

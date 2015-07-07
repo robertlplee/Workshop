@@ -7,21 +7,28 @@
     <%=@lesson.description%>
 </p>
 
-<%= render '/comments/form' %>
+<p>Users in this workshop:</br>
+	<% @lesson.users.each do |student| %>
+	<%= student.email %>
+	<% end %>
+</p>
 
-<h2>Comments:</h2>
-<%= render @all_comments %>
 
-<% link_to 'Back', lessons_path %>
 <% if current_user == @lesson.host %>
     <%= link_to "Edit workshop details", edit_lesson_path %> | 
 
     <%= link_to 'Destroy', lesson_path(@lesson),
 				method: :delete, 
 				data: { confirm: 'Are you sure?' } %> | 
+<% else %>
+	<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>
 <% end %>
 
+	
+
+
 <%= link_to 'Back to Lessons', lessons_path %>
+
 
 <html>
 <head>
@@ -41,9 +48,14 @@
 		L.mapbox.accessToken = 'pk.eyJ1IjoicmljaGFyZGxpbjMiLCJhIjoiOTM3NmRhZGI0ODY3ZWNiNTYwMjFhZjNiZDVjMzVmNDkifQ.AiyM9lt0c30Ktp_xyu3z3Q';
 			var map = L.mapbox.map('map', 'mapbox.streets')
     		.setView([40, -74.50], 3);
-		var myLocation = L.mapbox.featureLayer()
-		.loadURL ('/placess.json')
-		.addTo(map)
+			var myLocation = L.mapbox.featureLayer()
+			.loadURL ('/placess.json')
+			.addTo(map)
 	</script>
 </body>
 </html>
+
+<%= render '/comments/form' %>
+<h2>Comments:</h2>
+<%= render @all_comments %>
+

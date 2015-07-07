@@ -5,8 +5,12 @@ Rails.application.routes.draw do
 
   resources :lessons do
     resources :comments
+    member do 
+      get 'add_student'
+    end
   end
   
+  resources :charges
   
   
   root "welcome#index"
