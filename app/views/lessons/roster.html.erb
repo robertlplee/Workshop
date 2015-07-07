@@ -1,0 +1,5 @@
+<p>Users in this workshop:</br>
+	<% @lesson.users.each do |student| %>
+		<%= student.email %> </br>
+	<% end %>
+</p>

@@ -102,6 +102,10 @@ class LessonsController < ApplicationController
 		# end
 	end
 
+	def roster
+		@lesson = Lesson.find(params[:id])
+	end
+
 	private 
 	def lesson_params
 		params.require(:lesson).permit(:StartTime, :EndTIme, :location,
