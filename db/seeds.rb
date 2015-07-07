@@ -15,6 +15,6 @@ lessons = Lesson.create([
 		subject: "Painting",
 		price: 5.00,
 		capacity: 20,
-		description: "Expect nude models",
+		description: "Expect nudeloca models",
 		langauge: "body langauge"
 	}])
