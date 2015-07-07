@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'places/index'
+
   devise_for :users
 
   resources :lessons do

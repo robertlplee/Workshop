@@ -1,5 +1,5 @@
 <h1><%= @lesson.name %></h1>
-<h2> Hosted by: <%=@lesson.host.email%></h2>
+<h2> Hosted by: <%= @lesson.host.email %></h2>
 
 <p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.location%>.</p>
 <p>
@@ -22,4 +22,28 @@
 <% end %>
 
 <%= link_to 'Back to Lessons', lessons_path %>
-				
+
+<html>
+<head>
+	<meta charset=utf-8 />
+		<title>A simple map</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+	<style>
+		  body { margin:0; padding:0; }
+		  #map { position:absolute; top:0; bottom:0; width:50%; height: 50% }
+	</style>
+</head>
+<body>
+	<div id='map'></div>
+	<script>
+		L.mapbox.accessToken = 'pk.eyJ1IjoicmljaGFyZGxpbjMiLCJhIjoiOTM3NmRhZGI0ODY3ZWNiNTYwMjFhZjNiZDVjMzVmNDkifQ.AiyM9lt0c30Ktp_xyu3z3Q';
+			var map = L.mapbox.map('map', 'mapbox.streets')
+    		.setView([40, -74.50], 3);
+		var myLocation = L.mapbox.featureLayer()
+		.loadURL ('/placess.json')
+		.addTo(map)
+	</script>
+</body>
+</html>

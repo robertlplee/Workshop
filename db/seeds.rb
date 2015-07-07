@@ -20,4 +20,6 @@ lessons = Lesson.create([
 		host_id: 1
 	}])
 
+Place.create(name:'Home',address: '3893 Old Creek Rd, Troy, MI, 48084')
+
 

@@ -67,10 +67,39 @@ class LessonsController < ApplicationController
 		redirect_to @lesson
 	end
 
+	def place
+		@places = Place.all
+  		@geojson = Array.new
+
+  		@places.each do |place|
+  		@geojson << {
+  			type: 'Feature',
+  			geometry:{
+  				type: 'Point',
+  				coordinates: [place.longitude, place.latitude]
+  				},
+  				properties: {
+  					name: place.name,
+  					address: place.street,
+  					:'marker-color' => '#00607d',
+      				:'marker-symbol' => 'circle',
+     				:'marker-size' => 'medium'
+  					}
+  				}
+  			end
+  			respond_to do |format|
+  				format.html
+  				format.json { render json: @geojson } 
+  			end
+  		end
+
 	private 
 	def lesson_params
 		params.require(:lesson).permit(:StartTime, :EndTIme, :location,
 		:category, :name, :price, :capacity, :description, :language, :user_id)
+	end
+	def place_params
+		params.require(:place).permit(:name, :address)
 	end
 
 	def has_permission(lesson)
