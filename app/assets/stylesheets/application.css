@@ -11,5 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require_heroic-features
+ *= require_bootstrap
+ *= require_bootstrap.min
  *= require_self
  */
