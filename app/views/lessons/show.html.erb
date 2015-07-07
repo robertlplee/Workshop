@@ -8,8 +8,10 @@
 </p>
 
 <%= render '/comments/form' %>
+
 <h2>Comments:</h2>
-<%= render @lesson.comments %>
+<%= render @all_comments %>
+
 <% link_to 'Back', lessons_path %>
 <% if current_user == @lesson.host %>
     <%= link_to "Edit workshop details", edit_lesson_path %> | 

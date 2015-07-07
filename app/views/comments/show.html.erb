@@ -1,6 +1,6 @@
 <h2>Add a comment:</h2>
 
-<%= form_for ([@lesson, @lesson.comments.build]) do |f| %>
+<%= form_for ([@lesson, @comment]) do |f| %>
     <p>
         <%= f.label :commenter %><br>
         <%= f.text_field :commenter %>

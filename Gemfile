@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
-gem 'twitter-boostrap-rails'
+gem "twitter-bootstrap-rails"
 
 gem 'simple_form'
 

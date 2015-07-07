@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
         redirect_to lesson_path(@lesson)
     end
     
+    def edit
+        @lesson = Lesson.find(params[:lesson_id])
+		@comment = Comment.find(params[:id])
+    end
+    
     private
     def comment_params
         params.require(:comment).permit(:commenter, :body)
