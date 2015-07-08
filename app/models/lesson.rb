@@ -4,5 +4,9 @@ class Lesson < ActiveRecord::Base
 	belongs_to :host, class_name: "User"
 	has_many :comments
 	has_and_belongs_to_many :users
+
+	def self.search_by_name(query)
+  		where("name like ?", "%#{query}%") 
+	end
 end
  

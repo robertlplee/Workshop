@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :lessons do
-    resources :comments
     member do 
       get 'add_student'
       get 'roster'
     end
+    resources :comments
   end
+
+  
 
   
   resources :charges

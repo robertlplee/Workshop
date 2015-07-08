@@ -2,19 +2,24 @@
     <div class="container">
 
         <!-- Jumbotron Header -->
-        <header class="jumbotron hero-spacer">
-            <h1>A Warm Welcome!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-            <p><a class="btn btn-primary btn-large">Call to action!</a>
+        <header class="jumbotron hero-spacer welcome_head">
+            <div class="welcome_head_filter"></div>
+            <div class="welcome_head_description">
+                <h1>Workshop</h1>
+            <h2>Everyone has something they are passionate about and want to share. Workshop is a site which will allow anyone to host a workshop about anything and open to all.</h2>
+            <p>
+                <a class="btn btn-primary btn-large", href="/lessons">Join a Workshop!</a>
+                <a class="btn btn-primary btn-large", href="/lessons/new">Host a Workshop!</a>
             </p>
+            </div>
+            
         </header>
-
         <hr>
 
         <!-- Title -->
         <div class="row">
             <div class="col-lg-12">
-                <h3>Latest Features</h3>
+                <h3>Featured workshops</h3>
             </div>
         </div>
         <!-- /.row -->
@@ -22,57 +27,19 @@
         <!-- Page Features -->
         <div class="row text-center">
 
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
+            <% @featured_lessons.each do |lesson| %>
+                <div class="col-md-3 col-sm-6 hero-feature">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/800x500" alt="">
+                        <div class="caption">
+                            <p><%=lesson.name%></p>
+                            <p>
+                                <a href="/lessons/<%=lesson.id%>" class="btn btn-primary">Additional details</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
-                    <div class="caption">
-                        <h3>Feature Label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <% end %>
 
         </div>
         <!-- /.row -->
