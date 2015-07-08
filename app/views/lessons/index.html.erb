@@ -90,6 +90,11 @@
 </div>
 <!-- /.container -->
 
+<%= form_tag animals_search_path, method: :get do |f| %>
+    <%= text_field :q, params[:q]  %>
+    <%= button_tag “Search” %>
+<% end %>
+
 <h1>All workshops</h1>
 
 <p><%=link_to "Host a new workshop", new_lesson_path%></p>
