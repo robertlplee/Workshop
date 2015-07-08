@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   # admin == 1
   # rails generate migration AddRoleToUser Role:integer 
   # Rake db:migrate
-  enum role: [:user, :admin]
+  enum role: [:user, :admin, :editor]
   # user.update role: 1
 end

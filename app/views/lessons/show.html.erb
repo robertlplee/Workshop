@@ -1,3 +1,5 @@
+<% if can_create_animal? %>
+
 <h1><%= @lesson.name %></h1>
 <h2> Hosted by: <%= @lesson.host.email %></h2>
 
@@ -22,8 +24,6 @@
 		<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>
 	<% end %>
 <% end %>
-
-
 
 <%= link_to 'Back to Lessons', lessons_path %>
 

@@ -1,14 +1,9 @@
 class LessonsController < ApplicationController
 	
 	before_action :authenticate_user!
-	# before_action :authorize_admin!, only: [:]
-	
-	# def authorize_admin!
-	# =>unless current_user.admin?
-	# =>	redirect_to :root, alert: "you cant do that!"
-	# # => end
-	# # def authorize_editor_or_admin?
-	# 	if current_user.admin || current_user.ediotr?
+	before_action :authorize_admin!, only: [:new, :create, :destroy]
+	before_action :autorhize_editor_or_admin!, only: [:edit, :update]
+
 	def index
 		@lessons = Lesson.all
 	end
@@ -25,10 +20,7 @@ class LessonsController < ApplicationController
 	end
 
 	def new
-		# unless current_user.admin?
-			#redirect_to :root, alert: "You cant do that!"
-		#else
-		@lesson = Lesson.new
+			@lesson = Lesson.new
 	end
 
 	def create
@@ -117,5 +109,19 @@ class LessonsController < ApplicationController
 	def has_permission(lesson)
 		current_user == lesson.host 
 	end
+
+	def authorize_admin!
+		unless current_user.admin?
+			redirect_to :root, alert: "You can't do that!"
+		end
+	end
+	
+	def authorize_editor_or_admin!
+		if current_user.admin? || current_user.editor?
+		else
+			redirect_to :root, alert: "You can't do that!"
+		end
+	end
+
 
 end
