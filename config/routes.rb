@@ -7,8 +7,10 @@ Rails.application.routes.draw do
     resources :comments
     member do 
       get 'add_student'
+      get 'roster'
     end
   end
+
   
   resources :charges
   
