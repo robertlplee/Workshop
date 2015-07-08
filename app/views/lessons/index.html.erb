@@ -91,7 +91,10 @@
 </div>
 <!-- /.container -->
 
-
+<%= form_tag lessons_search_path, method: :get do |f| %>
+    <%= text_field :q, params[:q]  %>
+    <%= submit_tag "Search" %>
+<% end %>
 
 <h1>All workshops</h1>
 

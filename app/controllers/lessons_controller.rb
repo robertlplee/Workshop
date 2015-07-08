@@ -13,15 +13,15 @@ class LessonsController < ApplicationController
 		@lessons = Lesson.all
 	end
 
+	def search
+		@lessons = Lesson.search(params[:q])
+		render :index
+	end
+
 	def show
 		@lesson = Lesson.find(params[:id])
 		@comment = @lesson.comments.build
 		@all_comments = @lesson.comments.reject(&:new_record?)
-	end
-
-	def search
-		@animals = Animal.search(params[:q])
-		render :index
 	end
 
 	def new
