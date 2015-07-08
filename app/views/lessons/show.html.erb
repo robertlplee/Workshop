@@ -27,6 +27,21 @@
 
 <%= link_to 'Back to Lessons', lessons_path %>
 
+<div class='Stripe'>
+<%= link_to image_tag('/img/blue-on-light.png'), user_omniauth_authorize_path(:stripe_connect) %>
+</div>
+
+<form action="/charge" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js"
+    class="stripe-button"
+    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+    data-image="/square-image.png"
+    data-name="Demo Site"
+    data-description="2 widgets ($20.00)"
+    data-amount="2000">
+  </script>
+</form>
 
 <!-- <html>
 <head>
