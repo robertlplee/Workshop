@@ -8,6 +8,7 @@ gem 'simple_form'
 
 gem 'geocoder'
 
+
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'omniauth-stripe-connect'
