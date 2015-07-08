@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'places/index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :lessons do
     member do 
