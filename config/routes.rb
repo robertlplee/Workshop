@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'places/index'
 
+  get 'welcome/about', to: "welcome#about"
+
   devise_for :users
   resources :lessons do
     member do 
