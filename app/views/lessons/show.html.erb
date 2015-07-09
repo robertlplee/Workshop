@@ -39,7 +39,7 @@
 											method: :delete, 
 											data: { confirm: 'Are you sure?' } %> | 
 							<% else %>
-								<% if @lesson.users.size > @lesson.capacity %>
+								<% if @lesson.users.size >= @lesson.capacity %>
 									<strong>This workshop is full!</strong>
 								<% else %>
 									<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>

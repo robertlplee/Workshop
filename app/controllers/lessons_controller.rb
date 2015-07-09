@@ -16,7 +16,7 @@ class LessonsController < ApplicationController
 		@lesson = Lesson.find(params[:id])
 		@comment = @lesson.comments.build
 		@all_comments = @lesson.comments.reject(&:new_record?)
-		@profile = current_user.profile
+		@profile = Profile.find(@lesson.host_id)
 
 		@places = Place.all
   		@geojson = Array.new
