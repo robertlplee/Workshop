@@ -1,15 +1,40 @@
-#map
-{
-  position:absolute;
-  top:0; 
-  bottom:0; 
-  width:50%; 
-  height: 50%
-}
 
 .Stripe
 {
 	position: relative;
 	width: 30%;
 	height: 30%;
+}
+
+.show_page
+{
+	position: relative;
+	padding-top: 60px;
+
+}
+
+.index_page
+{
+	position: relative;
+	padding-top: 20px;
+}
+
+.comments
+{
+	padding-top: 20px;
+}
+
+#map
+{
+	position: relative;
+	padding-top: 100px;
+	width: 847px;
+	height: 400px;
+}
+
+.search_bar
+{
+	position: relative;
+	padding-bottom: 10px;
+
 }
