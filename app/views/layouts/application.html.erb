@@ -34,18 +34,19 @@
                 <li>
                     <a href="/lessons/new">Host A Workshop</a>
                 </li>
-                <li>
-                    <% if Profile.find_by(current_user.id) %>
-                        <%=link_to "Your Profile", profile_path(current_user)%>
-                    <% else %>
-                        <%=link_to "Create Your Profile", new_profile_path %>
-                    <% end %>
-                </li>
+
 
                 <% if user_signed_in? %>
-                    <li>Logged in as <strong><%= current_user.email %></strong></li>
-                    <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+                    
+                    <% if Profile.find_by(current_user.id) %>
+                        <li><%=link_to "Your Profile", profile_path(current_user)%></li>
+                        <li><%= link_to 'Edit profile', edit_profile_path(current_user), :class => 'navbar-link' %></li>
+                    <% else %>
+                        <li><%=link_to "Create Your Profile", new_profile_path %></li>
+                    <% end %>
                     <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                    <li><a>Logged in as <%= current_user.email %></a></li>
+
                 <% else %>
                     <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
                     <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
