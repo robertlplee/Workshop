@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :lessons
   
-  
+  has_one :profile
   # :role
   # user == 0
   # admin == 1

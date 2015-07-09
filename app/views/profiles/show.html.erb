@@ -1,0 +1,32 @@
+<div class="container">
+	<h1><%=@profile.name%>'s profile</h1>
+	<%= link_to "edit your profile", edit_profile_path(@profile) %>
+	</br>
+	<% if @profile.photo %>
+		<img src="<%=@profile.photo%>"%>
+	<% end %>
+
+	<% if @profile.description %>
+		<h2>Description</h2>
+		<p><%=@profile.description%></p>
+	<% end %>
+
+	<% if @profile.base %>
+		<h2>Based in:</h2>
+		<p><%=@profile.base%></p>
+	<% end %>
+
+	<% if @profile.education %>
+		<h2>Education</h2>
+		<p><%=@profile.education%></p>
+	<% end %>
+
+	<% if @profile.interests %>
+		<h2>Interests</h2>
+		<p><%=@profile.interests%></p>
+	<% end %>
+
+		<h2>Contact me at:</h2>
+		<p><%=current_user.email%></p>
+
+</div>

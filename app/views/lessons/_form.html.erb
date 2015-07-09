@@ -1,4 +1,5 @@
 <%= form_for @lesson do |f| %>
+<<<<<<< HEAD
 <p>
     <%= f.label :category %><br>
     <%= f.text_field :category %>
@@ -45,6 +46,54 @@
         </p>
 
 <p> <%= f.submit %> </p>
+=======
+    <p>
+        <%= f.label "Workshop name" %><br>
+        <%= f.text_field :name %>
+    </p>
+
+    <p>
+        <%= f.label :location %><br>
+        <%= f.text_field :location %>
+    </p>
+
+    <p>
+        <%= f.label :category %><br>
+        <%= f.text_field :category %>
+    </p>
+
+    <p>
+        <%= f.label "Start Time"  %><br>
+        <%= f.text_field :StartTime %>
+    </p>
+
+    <p>
+        <%= f.label "End Time" %><br>
+        <%= f.text_field :EndTime %>
+    </p>
+
+    <p>
+        <%= f.label :price %><br>
+        <%= f.text_field :price %>
+    </p>
+
+    <p>
+        <%= f.label :capacity %><br>
+        <%= f.text_field :capacity %>
+    </p>
+
+    <p>
+        <%= f.label :description %><br>
+        <%= f.text_field :description %>
+    </p>
+
+    <p>
+        <%= f.label :langauge %><br>
+        <%= f.text_field :langauge %>
+    </p>
+
+    <p> <%= f.submit %> </p>
+>>>>>>> 7775970a6e5e0082f725f20889e3220d14c2ff0b
 
     <% end %>
 <% end %>
