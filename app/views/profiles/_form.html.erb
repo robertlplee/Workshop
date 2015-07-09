@@ -1,37 +1,39 @@
-<%= form_for (@profile) do |f| %>
-    <p>
-        <%= f.label "Name" %><br>
-        <%= f.text_field :name %>
-    </p>
-    
-    <p>
-        <%= f.label "Photo URL" %><br>
-        <%= f.text_field :photo %>
-    </p>
+<div class="profile">
+    <%= form_for (@profile) do |f| %>
+        <p>
+            <%= f.label "Name" %><br>
+            <%= f.text_field :name %>
+        </p>
+        
+        <p>
+            <%= f.label "Photo URL" %><br>
+            <%= f.text_field :photo %>
+        </p>
 
-    <p>
-        <%= f.label "Home base" %><br>
-        <%= f.text_field :base %>
-    </p>
-    
-    <p>
-        <%= f.label "Description" %><br>
-        <%= f.text_field :description %>
-    </p>
+        <p>
+            <%= f.label "Home base" %><br>
+            <%= f.text_field :base %>
+        </p>
+        
+        <p>
+            <%= f.label "Description" %><br>
+            <%= f.text_field :description %>
+        </p>
 
-    <p>
-        <%= f.label "Education" %><br>
-        <%= f.text_field :education %>
-    </p>
+        <p>
+            <%= f.label "Education" %><br>
+            <%= f.text_field :education %>
+        </p>
 
-    <p>
-        <%= f.label "Interests" %><br>
-        <%= f.text_field :interests %>
-    </p>
+        <p>
+            <%= f.label "Interests" %><br>
+            <%= f.text_field :interests %>
+        </p>
 
-    <p>
-        <a class="btn btn-success"><%= f.submit %></a>
-    </p>
-<%end%>
+        <p>
+            <a class="btn btn-success"><%= f.submit %></a>
+        </p>
+    <%end%>
 
-<% link_to 'Back', lessons_path %>
+    <% link_to 'Back', lessons_path %>
+</div>

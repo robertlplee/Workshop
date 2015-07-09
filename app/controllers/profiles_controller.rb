@@ -15,6 +15,16 @@ class ProfilesController < ApplicationController
 		@profile = Profile.find(params[:id])
 	end
 
+	def update
+		@profile = Profile.find(params[:id])
+
+		if @profile.update(profile_params)
+		redirect_to @profile 
+		else
+		render 'edit'
+		end
+	end
+
 	def create
 		@profile = Profile.new(profile_params)
 		@profile.user = current_user
