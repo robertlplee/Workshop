@@ -31,7 +31,7 @@ lessons = Lesson.create([
 		host_id: 2
 	}])
 
-Place.create(name:'Home',address: '3893 Old Creek Rd, Troy, MI, 48084')
+Place.create(name:'Home', address: '3893 Old Creek Rd, Troy, MI, 48084')
 
 
 
