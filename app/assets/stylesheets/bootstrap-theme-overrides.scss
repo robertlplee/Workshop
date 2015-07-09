@@ -1,0 +1,19 @@
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: image-url("about_background.jpg") no-repeat center center;
+    background-size: cover;
+    color: black;
+}
+
+.intro_heading_text{
+	font-size: 300%;
+	font-family: sans-serif;
+}
+
+.intro_heading_subtext{
+	font-size: 200%;
+	font-family: sans-serif;
+}
