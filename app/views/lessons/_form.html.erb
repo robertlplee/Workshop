@@ -1,15 +1,5 @@
 <%= form_for @lesson do |f| %>
 <p>
-    <%= f.label "Workshop name" %><br>
-    <%= f.text_field :name %>
-</p>
-
-<p>
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-</p>
-
-<p>
     <%= f.label :category %><br>
     <%= f.text_field :category %>
 </p>
@@ -43,7 +33,18 @@
     <%= f.label :langauge %><br>
     <%= f.text_field :langauge %>
 </p>
+    <%= form_for @place do |f| %>
+        <p>
+            <%= f.label "Workshop name" %><br>
+            <%= f.text_field :name %>
+        </p>
+
+        <p>
+            <%= f.label :location %><br>
+            <%= f.text_field :location %>
+        </p>
 
 <p> <%= f.submit %> </p>
 
+    <% end %>
 <% end %>
