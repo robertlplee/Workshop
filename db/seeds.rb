@@ -21,7 +21,7 @@ lessons = Lesson.create([
 	}, {
 		StartTime: DateTime.new(2014,9,1,13,00),
 		EndTime: DateTime.new(2015,9,1,15,00),
-		location: "4909 Somerton dr, Troy Michigan 48084",
+		address: "3893 Old Creek Rd Troy MI, 48084",
 		category: "Sports",
 		name: "stripping",
 		price: 0,
@@ -76,7 +76,6 @@ lessons = Lesson.create([
 	}
 	])
 
-Place.create(name:'Home', address: '3893 Old Creek Rd, Troy, MI, 48084')
 
 
 

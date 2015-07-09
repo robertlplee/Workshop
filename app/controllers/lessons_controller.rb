@@ -1,16 +1,83 @@
 class LessonsController < ApplicationController
 	
+
+	# before_action :authenticate_user!
+	# before_action :authorize_admin!, only: [:new, :destroy]
+
 	# before_action :authorize_admin!, only: [:new, :create, :destroy]
 	# before_action :authorize_editor_or_admin!, only: [:edit, :update]
 
 	def index
 		@lessons = Lesson.all
-	end
+		@geojson = Array.new
 
-	def search
-		@lessons = Lesson.search(params[:q])
-		render :index
-	end
+		@lessons.each do |lesson|
+			@geojson << {
+				type: 'Feature',
+				geometry:{
+					type: 'Point',
+					coordinates: [lesson.longitude, lesson.latitude]
+					},
+					properties: {
+						name: lesson.name,
+						address: lesson.address,
+						:'marker-color' => '#00607d',
+						:'marker-symbol' => 'circle',
+						:'marker-size' => 'medium'
+					}
+				}
+			end
+			respond_to do |format|
+				format.html
+				format.json { render json: @geojson } 
+			end
+		end
+
+		def search
+			@lessons = Lesson.search(params[:q])
+			render :index
+		end
+
+
+		def new
+			@lesson = Lesson.new
+		end
+
+		def create
+			@lesson = current_user.lessons.build(lesson_params)
+			@lesson.host = current_user
+
+			if @lesson.save
+				redirect_to @lesson
+			else
+				render "new"
+			end
+		end
+
+		def edit
+			@lesson = Lesson.find(params[:id])
+			unless current_user == @lesson.host
+				redirect_to :root, alert: "Only the host can edit the workshop information"
+			end
+		end
+
+		def update
+			@lesson = Lesson.find(params[:id])
+
+			if @lesson.update(lesson_params)
+				redirect_to @lesson 
+			else
+				render 'edit'
+			end
+		end
+
+		def destroy
+			@lesson = Lesson.find(params[:id])
+			unless current_user == @lesson.host
+				redirect_to :root, alert: "Only the host can edit the workshop information"
+			end
+			@lesson.destroy
+		end
 
 	def show
 		@lesson = Lesson.find(params[:id])
@@ -36,11 +103,11 @@ class LessonsController < ApplicationController
      				:'marker-size' => 'medium'
   					}
   				}
-  			end
-  			respond_to do |format|
-  				format.html
-  				format.json { render json: @geojson } 
-  			end
+		end
+		respond_to do |format|
+			format.html
+			format.json { render json: @geojson } 
+		end
 	end
 
 	def new
@@ -53,35 +120,7 @@ class LessonsController < ApplicationController
 
 		if @lesson.save
 			redirect_to @lesson
-		else
-			render "new"
 		end
-	end
-
-	def edit
-		@lesson = Lesson.find(params[:id])
-		unless current_user == @lesson.host
-			redirect_to :root, alert: "Only the host can edit the workshop information"
-		end
-	end
-
-	def update
-		@lesson = Lesson.find(params[:id])
-
-		if @lesson.update(lesson_params)
-		redirect_to @lesson 
-		else
-		render 'edit'
-		end
-	end
-
-	def destroy
-		@lesson = Lesson.find(params[:id])
-		unless current_user == @lesson.host
-			redirect_to :root, alert: "Only the host can edit the workshop information"
-		end
-		@lesson.destroy
-		redirect_to @lesson
 	end
 
 	def add_student
@@ -96,9 +135,10 @@ class LessonsController < ApplicationController
 
 	private 
 	def lesson_params
-		params.require(:lesson).permit(:StartTime, :EndTIme, :location,
-		:category, :name, :price, :capacity, :description, :language, :user_id)
+		params.require(:lesson).permit(:StartTime, :EndTIme, :address,
+			:category, :name, :price, :capacity, :description, :language, :user_id)
 	end
+
 	def place_params
 		params.require(:place).permit(:name, :address)
 	end
