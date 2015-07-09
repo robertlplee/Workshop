@@ -1,12 +1,10 @@
 
-<!-- Page Content -->
-<div class="container">
+    <!-- Page Content -->
+    <div class="container">
 
-    <div class="row">
 <div class="show_page">
         <div class="row">
 <!-- left -->
-<<<<<<< HEAD
             <div class="col-md-3">
                 <p class="lead">Shop Name</p>
                 <div class="search_bar_show">
@@ -20,63 +18,49 @@
                     <a href="#" class="list-group-item">Category 2</a>
                     <a href="#" class="list-group-item">Category 3</a>
                 </div>
-=======
-        <div class="col-md-3">
-            <p class="lead">Shop Name</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Category 1</a>
-                <a href="#" class="list-group-item">Category 2</a>
-                <a href="#" class="list-group-item">Category 3</a>
->>>>>>> 7775970a6e5e0082f725f20889e3220d14c2ff0b
             </div>
-        </div>
 
-        <div class="col-md-9">
+            <div class="col-md-9">
 <!-- right -->
 <!-- map -->
-            <div class="thumbnail">
-                <img class="img-responsive" src="http://placehold.it/800x300" alt="">
-
+                <div class="thumbnail">
+                    <img class="img-responsive" src="http://placehold.it/800x300" alt="">
 <!-- /map -->
 
 <!-- details -->
-                <div class="caption-full">
-                    <h4 class="pull-right">$<%=@lesson.price%></h4>
-                    <h4><a href="#"><%= @lesson.name %></a>, 
-                        Hosted by: <%= link_to @profile.name, profile_path(@lesson.host_id)%>.</h4> 
-                    <p>
-                        <% if current_user == @lesson.host %>
-						    <%= link_to "Edit workshop details", edit_lesson_path %> | 
-						    <%= link_to 'Destroy', lesson_path(@lesson),
-										method: :delete, 
-										data: { confirm: 'Are you sure?' } %> | 
-						<% else %>
-							<% if @lesson.users.size >= @lesson.capacity %>
-								<strong>This workshop is full!</strong>
+                    <div class="caption-full">
+                        <h4 class="pull-right">$<%=@lesson.price%></h4>
+                        <h4><a href="#"><%= @lesson.name %></a>, Hosted by: <%= @lesson.host.email%>.</h4> 
+                        <p>
+	                        <% if current_user == @lesson.host %>
+							    <%= link_to "Edit workshop details", edit_lesson_path %> | 
+							    <%= link_to 'Destroy', lesson_path(@lesson),
+											method: :delete, 
+											data: { confirm: 'Are you sure?' } %> | 
 							<% else %>
-                                There are <%=(@lesson.capacity - @lesson.users.size)%> spaces left in this workshop. |
-								<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>
+								<% if @lesson.users.size > @lesson.capacity %>
+									<strong>This workshop is full!</strong>
+								<% else %>
+									<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>
+								<% end %>
 							<% end %>
-						<% end %>
-						<%= link_to "See registered roster", roster_lesson_path(@lesson) %>
-					</p>
-                   	<p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.location%>.</p>
-                    <p><%= @lesson.description %></p>
+							<%= link_to "See registered roster", roster_lesson_path(@lesson) %>
+						</p>
+                       	<p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.location%>.</p>
+                        <p><%= @lesson.description %></p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right">3 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                            4.0 stars
+                        </p>
+                    </div>
                 </div>
-                <div class="ratings">
-                    <p class="pull-right">3 reviews</p>
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                        4.0 stars
-                    </p>
-                </div>
-            </div>
-<!-- /details -->
-
 <!-- /details -->
 <div class ="map">
 	<html>
@@ -129,15 +113,26 @@
                 </div>
             </div>
 <!-- /comments -->
+
             </div>
-<!-- /comments -->
 
         </div>
 
     </div>
-
 </div>
 
+    <!-- /.container -->
 
-</div>
-
+    <div class="container">
+<!-- Payment -->
+<form action="/charge" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js"
+    class="stripe-button"
+    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+    data-image="/square-image.png"
+    data-name="Demo Site"
+    data-description="2 widgets ($20.00)"
+    data-amount="2000">
+  </script>
+</form>
