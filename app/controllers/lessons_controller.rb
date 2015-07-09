@@ -84,6 +84,53 @@ class LessonsController < ApplicationController
 				redirect_to :root, alert: "Only the host can edit the workshop information"
 			end
 			@lesson.destroy
+	end
+
+	def search
+		@lessons = Lesson.search(params[:q])
+		render :index
+	end
+
+	def show
+		@lesson = Lesson.find(params[:id])
+		@comment = @lesson.comments.build
+		@all_comments = @lesson.comments.reject(&:new_record?)
+		@profile = Profile.find(@lesson.host_id)
+
+		@places = Place.all
+  		@geojson = Array.new
+
+  		@places.each do |place|
+  		@geojson << {
+  			type: 'Feature',
+  			geometry:{
+  				type: 'Point',
+  				coordinates: [place.longitude, place.latitude]
+  				},
+  				properties: {
+  					name: place.name,
+  					address: place.address,
+  					:'marker-color' => '#00607d',
+      				:'marker-symbol' => 'circle',
+     				:'marker-size' => 'medium'
+  					}
+  				}
+  			end
+  			respond_to do |format|
+  				format.html
+  				format.json { render json: @geojson } 
+  			end
+	end
+
+	def new
+		@lesson = Lesson.new
+	end
+
+	def create
+		@lesson = current_user.lessons.build(lesson_params)
+		@lesson.host = current_user
+
+		if @lesson.save
 			redirect_to @lesson
 		end
 
