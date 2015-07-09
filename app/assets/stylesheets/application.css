@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require_heroic-features
-  *= require_shop-homepage
-
+ *= require_shop-homepage
+ *= require_landing-page
  *= require_bootstrap
  *= require_bootstrap.min
  *= require_self

@@ -5,10 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
-<p class="navbar-text pull-right">
-
     <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>.
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
@@ -25,9 +23,8 @@
     <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    
 
-<!-- <!-- Navigation -->
+    <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -38,13 +35,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand"> Start A WorkShop!</a>
+            <a class="navbar-brand", href="/">Workshop</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">About</a>
+                    <a href="/welcome/about">About</a>
                 </li>
                 <li>
                     <a href="/lessons">Find A Workshop</a>
@@ -57,10 +54,21 @@
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
-</nav> -->
-
-
+</nav>
+    
 <%= yield %>
+
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; iXperience 2015</p>
+                </div>
+            </div>
+        </footer>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
