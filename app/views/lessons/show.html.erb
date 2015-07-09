@@ -24,7 +24,8 @@
 <!-- details -->
                 <div class="caption-full">
                     <h4 class="pull-right">$<%=@lesson.price%></h4>
-                    <h4><a href="#"><%= @lesson.name %></a>, Hosted by: <%= @lesson.host.email%>.</h4> 
+                    <h4><a href="#"><%= @lesson.name %></a>, 
+                        Hosted by: <%= link_to @profile.name, profile_path(@lesson.host_id)%>.</h4> 
                     <p>
                         <% if current_user == @lesson.host %>
 						    <%= link_to "Edit workshop details", edit_lesson_path %> | 
@@ -32,9 +33,10 @@
 										method: :delete, 
 										data: { confirm: 'Are you sure?' } %> | 
 						<% else %>
-							<% if @lesson.users.size > @lesson.capacity %>
+							<% if @lesson.users.size >= @lesson.capacity %>
 								<strong>This workshop is full!</strong>
 							<% else %>
+                                There are <%=(@lesson.capacity - @lesson.users.size)%> spaces left in this workshop. |
 								<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>
 							<% end %>
 						<% end %>

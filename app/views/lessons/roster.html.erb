@@ -1,5 +1,5 @@
 <p>Users in this workshop:</br>
 	<% @lesson.users.each do |student| %>
-		<%= student.email %> </br>
+		<%= link_to student.profile.name, profile_path(student) %> </br>
 	<% end %>
 </p>
