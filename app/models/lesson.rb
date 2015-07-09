@@ -6,7 +6,9 @@ class Lesson < ActiveRecord::Base
 	has_and_belongs_to_many :users
 
 	def self.search(query)
-  		where("name LIKE ? or category LIKE ? or location LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%") 
+  		where("name ILIKE ? or category ILIKE ? or location ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%") 
 	end
+
+
 end
  

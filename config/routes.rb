@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'welcome/about', to: "welcome#about"
 
-  get "/lessons/search" => 'lessons@search'
+  get "/lessons/search", to: 'lessons#search', as: 'lessons_search'
   devise_for :users
 
   resources :profiles

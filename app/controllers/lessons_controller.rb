@@ -87,7 +87,7 @@ class LessonsController < ApplicationController
 	def add_student
 		@lesson = Lesson.find(params[:id])
 		@lesson.users << current_user
-		redirect_to @lesson
+		redirect_to roster_lesson_path(@lesson)
 	end
 
 	def roster
