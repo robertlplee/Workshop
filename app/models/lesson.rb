@@ -1,4 +1,5 @@
 class Lesson < ActiveRecord::Base
+	
 	geocoded_by :address
 	after_validation :geocode
 	has_many :students, class_name: "User", foreign_key: 'user_id'
