@@ -31,3 +31,10 @@
 	width: 847px;
 	height: 400px;
 }
+
+.search_bar
+{
+	position: relative;
+	padding-bottom: 10px;
+
+}
