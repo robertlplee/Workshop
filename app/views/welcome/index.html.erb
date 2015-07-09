@@ -25,17 +25,17 @@
         <div class="row text-center">
 
             <% @featured_lessons.each do |lesson| %>
-                <div class="col-md-3 col-sm-6 hero-feature">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/800x500" alt="">
-                        <div class="caption">
-                            <p><%=lesson.name%></p>
-                            <p>
-                                <a href="/lessons/<%=lesson.id%>" class="btn btn-primary">Additional details</a>
-                            </p>
-                        </div>
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="http://placehold.it/800x500" alt="">
+                    <div class="caption">
+                        <p><%=lesson.name%></p>
+                        <p>
+                            <a href="/lessons/<%=lesson.id%>" class="btn btn-primary">Additional details</a>
+                        </p>
                     </div>
                 </div>
+            </div>
             <% end %>
 
         </div>
