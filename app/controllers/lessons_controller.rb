@@ -1,8 +1,7 @@
 class LessonsController < ApplicationController
 	
-	before_action :authenticate_user!
-	before_action :authorize_admin!, only: [:new, :create, :destroy]
-	before_action :authorize_editor_or_admin!, only: [:edit, :update]
+	# before_action :authorize_admin!, only: [:new, :create, :destroy]
+	# before_action :authorize_editor_or_admin!, only: [:edit, :update]
 
 	def index
 		@lessons = Lesson.all
