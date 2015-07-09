@@ -1,34 +1,50 @@
 class LessonsController < ApplicationController
 	
 	before_action :authenticate_user!
-	# before_action :authorize_admin!, only: [:]
-	
-	# def authorize_admin!
-	# =>unless current_user.admin?
-	# =>	redirect_to :root, alert: "you cant do that!"
-	# # => end
-	# # def authorize_editor_or_admin?
-	# 	if current_user.admin || current_user.ediotr?
+	before_action :authorize_admin!, only: [:new, :create, :destroy]
+	before_action :autorhize_editor_or_admin!, only: [:edit, :update]
+
 	def index
 		@lessons = Lesson.all
+	end
+
+	def search
+		@lessons = Lesson.search(params[:q])
+		render :index
 	end
 
 	def show
 		@lesson = Lesson.find(params[:id])
 		@comment = @lesson.comments.build
 		@all_comments = @lesson.comments.reject(&:new_record?)
-	end
 
-	def search
-		@animals = Animal.search(params[:q])
-		render :index
+		@places = Place.all
+  		@geojson = Array.new
+
+  		@places.each do |place|
+  		@geojson << {
+  			type: 'Feature',
+  			geometry:{
+  				type: 'Point',
+  				coordinates: [place.longitude, place.latitude]
+  				},
+  				properties: {
+  					name: place.name,
+  					address: place.address,
+  					:'marker-color' => '#00607d',
+      				:'marker-symbol' => 'circle',
+     				:'marker-size' => 'medium'
+  					}
+  				}
+  			end
+  			respond_to do |format|
+  				format.html
+  				format.json { render json: @geojson } 
+  			end
 	end
 
 	def new
-		# unless current_user.admin?
-			#redirect_to :root, alert: "You cant do that!"
-		#else
-		@lesson = Lesson.new
+			@lesson = Lesson.new
 	end
 
 	def create
@@ -68,37 +84,10 @@ class LessonsController < ApplicationController
 		redirect_to @lesson
 	end
 
-	def place
-		@places = Place.all
-  		@geojson = Array.new
-
-  		@places.each do |place|
-  		@geojson << {
-  			type: 'Feature',
-  			geometry:{
-  				type: 'Point',
-  				coordinates: [place.longitude, place.latitude]
-  				},
-  				properties: {
-  					name: place.name,
-  					address: place.street,
-  					:'marker-color' => '#00607d',
-      				:'marker-symbol' => 'circle',
-     				:'marker-size' => 'medium'
-  					}
-  				}
-  			end
-  			respond_to do |format|
-  				format.html
-  				format.json { render json: @geojson } 
-  			end
-  		end
-
 	def add_student
 		@lesson = Lesson.find(params[:id])
 		@lesson.users << current_user
 		redirect_to @lesson
-
 	end
 
 	def roster
@@ -117,5 +106,19 @@ class LessonsController < ApplicationController
 	def has_permission(lesson)
 		current_user == lesson.host 
 	end
+
+	def authorize_admin!
+		unless current_user.admin?
+			redirect_to :root, alert: "You can't do that!"
+		end
+	end
+	
+	def authorize_editor_or_admin!
+		if current_user.admin? || current_user.editor?
+		else
+			redirect_to :root, alert: "You can't do that!"
+		end
+	end
+
 
 end
