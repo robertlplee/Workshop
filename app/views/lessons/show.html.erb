@@ -30,7 +30,8 @@
 <!-- details -->
                     <div class="caption-full">
                         <h4 class="pull-right">$<%=@lesson.price%></h4>
-                        <h4><a href="#"><%= @lesson.name %></a>, Hosted by: <%= @lesson.host.email%>.</h4> 
+                        <h4><a href="#"><%= @lesson.name %></a>, 
+                            Hosted by: <%= link_to @profile.name, profile_path(@profile)%>.</h4> 
                         <p>
 	                        <% if current_user == @lesson.host %>
 							    <%= link_to "Edit workshop details", edit_lesson_path %> | 
@@ -120,19 +121,3 @@
 
     </div>
 </div>
-
-    <!-- /.container -->
-
-    <div class="container">
-<!-- Payment -->
-<form action="/charge" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js"
-    class="stripe-button"
-    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-    data-image="/square-image.png"
-    data-name="Demo Site"
-    data-description="2 widgets ($20.00)"
-    data-amount="2000">
-  </script>
-</form>
