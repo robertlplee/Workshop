@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'places/index'
+  # get 'lessons/index'
 
   get 'welcome/about', to: "welcome#about"
 
