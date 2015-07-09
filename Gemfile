@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
+ ruby '2.2.1'
 
 gem 'devise'
+
+gem "rails_12factor"
 
 gem "twitter-bootstrap-rails"
 
