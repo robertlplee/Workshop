@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 
   get "/lessons/search" => 'lessons@search'
   devise_for :users
+
+  resources :profiles
+
+  # get '/users/profile', to: "users#show"
+
   resources :lessons do
     member do 
       get 'add_student'

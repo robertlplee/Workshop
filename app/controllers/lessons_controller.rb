@@ -44,7 +44,7 @@ class LessonsController < ApplicationController
 	end
 
 	def new
-			@lesson = Lesson.new
+		@lesson = Lesson.new
 	end
 
 	def create

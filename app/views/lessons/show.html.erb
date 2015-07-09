@@ -1,160 +1,160 @@
 
-    <!-- Page Content -->
-    <div class="container">
+<!-- Page Content -->
+<div class="container">
 
-        <div class="row">
+    <div class="row">
 <!-- left -->
-            <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                </div>
+        <div class="col-md-3">
+            <p class="lead">Shop Name</p>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">Category 1</a>
+                <a href="#" class="list-group-item">Category 2</a>
+                <a href="#" class="list-group-item">Category 3</a>
             </div>
+        </div>
 
-            <div class="col-md-9">
+        <div class="col-md-9">
 <!-- right -->
 <!-- map -->
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+            <div class="thumbnail">
+                <img class="img-responsive" src="http://placehold.it/800x300" alt="">
 
 <!-- /map -->
 
 <!-- details -->
-                    <div class="caption-full">
-                        <h4 class="pull-right">$<%=@lesson.price%></h4>
-                        <h4><a href="#"><%= @lesson.name %></a>, Hosted by: <%= @lesson.host.email%>.</h4> 
-                        <p>
-	                        <% if current_user == @lesson.host %>
-							    <%= link_to "Edit workshop details", edit_lesson_path %> | 
-							    <%= link_to 'Destroy', lesson_path(@lesson),
-											method: :delete, 
-											data: { confirm: 'Are you sure?' } %> | 
+                <div class="caption-full">
+                    <h4 class="pull-right">$<%=@lesson.price%></h4>
+                    <h4><a href="#"><%= @lesson.name %></a>, Hosted by: <%= @lesson.host.email%>.</h4> 
+                    <p>
+                        <% if current_user == @lesson.host %>
+						    <%= link_to "Edit workshop details", edit_lesson_path %> | 
+						    <%= link_to 'Destroy', lesson_path(@lesson),
+										method: :delete, 
+										data: { confirm: 'Are you sure?' } %> | 
+						<% else %>
+							<% if @lesson.users.size > @lesson.capacity %>
+								<strong>This workshop is full!</strong>
 							<% else %>
-								<% if @lesson.users.size > @lesson.capacity %>
-									<strong>This workshop is full!</strong>
-								<% else %>
-									<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>
-								<% end %>
+								<%= link_to "Join workshop", add_student_lesson_path(@lesson) %>
 							<% end %>
-							<%= link_to "See registered roster", roster_lesson_path(@lesson) %>
-						</p>
-                       	<p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.location%>.</p>
-                        <p><%= @lesson.description %></p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">3 reviews</p>
-                        <p>
+						<% end %>
+						<%= link_to "See registered roster", roster_lesson_path(@lesson) %>
+					</p>
+                   	<p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.location%>.</p>
+                    <p><%= @lesson.description %></p>
+                </div>
+                <div class="ratings">
+                    <p class="pull-right">3 reviews</p>
+                    <p>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 stars
+                    </p>
+                </div>
+            </div>
+<!-- /details -->
+
+<!-- comments -->
+            <div class="well">
+				<%= render '/comments/form' %>
+                <div class="text-right">
+                </div>
+				<% @all_comments.each do |comment| %>
+                <hr>
+
+                    <div class="row">
+                        <div class="col-md-12">
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0 stars
-                        </p>
+                            <p><%=comment.commenter%></p>
+                            <span class="pull-right">Posted on <%=comment.created_at%></span>
+                            <p><%=comment.body%></p>
+                        </div>
                     </div>
-                </div>
-<!-- /details -->
-
-<!-- comments -->
-                <div class="well">
-					<%= render '/comments/form' %>
-                    <div class="text-right">
-                    </div>
-					<% @all_comments.each do |comment| %>
-                    <hr>
-
-	                    <div class="row">
-	                        <div class="col-md-12">
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star"></span>
-	                            <span class="glyphicon glyphicon-star-empty"></span>
-	                            <p><%=comment.commenter%></p>
-	                            <span class="pull-right">Posted on <%=comment.created_at%></span>
-	                            <p><%=comment.body%></p>
-	                        </div>
-	                    </div>
-	                <% end %>
-
-                </div>
-<!-- /comments -->
+                <% end %>
 
             </div>
+<!-- /comments -->
 
         </div>
 
     </div>
 
+</div>
 
-    <!-- /.container -->
 
-    <div class="container">
+<!-- /.container -->
+
+<div class="container">
 
 
 
 
 <!-- Payment -->
 <form action="/charge" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js"
-    class="stripe-button"
-    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-    data-image="/square-image.png"
-    data-name="Demo Site"
-    data-description="2 widgets ($20.00)"
-    data-amount="2000">
-  </script>
+<script
+src="https://checkout.stripe.com/checkout.js"
+class="stripe-button"
+data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+data-image="/square-image.png"
+data-name="Demo Site"
+data-description="2 widgets ($20.00)"
+data-amount="2000">
+</script>
 </form>
 
 
 
 
- <!-- Map -->
+<!-- Map -->
 <html>
 <head>
-	<meta charset=utf-8 />
-		<title>A simple map</title>
-		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-	<style>
-		  body { margin:0; padding:0; }
-		  
-	</style>
+<meta charset=utf-8 />
+	<title>A simple map</title>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+<style>
+	  body { margin:0; padding:0; }
+	  
+</style>
 </head>
 <body>
-	<div id='map'></div>
-	<script>
-		L.mapbox.accessToken = 'pk.eyJ1IjoicmljaGFyZGxpbjMiLCJhIjoiOTM3NmRhZGI0ODY3ZWNiNTYwMjFhZjNiZDVjMzVmNDkifQ.AiyM9lt0c30Ktp_xyu3z3Q';
-		var map = L.mapbox.map('map', 'mapbox.streets')
-			.setView([40, -74.50], 3);
-		var jsonURL = "/lessons/" + "<%= escape_javascript(params[:id]) %>" + ".json";
-		var myLocation = L.mapbox.featureLayer()
-			.loadURL(jsonURL)
-			.addTo(map)
-	</script>
+<div id='map'></div>
+<script>
+	L.mapbox.accessToken = 'pk.eyJ1IjoicmljaGFyZGxpbjMiLCJhIjoiOTM3NmRhZGI0ODY3ZWNiNTYwMjFhZjNiZDVjMzVmNDkifQ.AiyM9lt0c30Ktp_xyu3z3Q';
+	var map = L.mapbox.map('map', 'mapbox.streets')
+		.setView([40, -74.50], 3);
+	var jsonURL = "/lessons/" + "<%= escape_javascript(params[:id]) %>" + ".json";
+	var myLocation = L.mapbox.featureLayer()
+		.loadURL(jsonURL)
+		.addTo(map)
+</script>
 </body>
 </html>
 
 
 <!-- map -->
-				<!-- <head>
-					<meta charset=utf-8 />
-						<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-						<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
-						<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-				</head>
-				<body>
-					<div id='map'></div>
-					<script>
-						L.mapbox.accessToken = 'pk.eyJ1IjoicmljaGFyZGxpbjMiLCJhIjoiOTM3NmRhZGI0ODY3ZWNiNTYwMjFhZjNiZDVjMzVmNDkifQ.AiyM9lt0c30Ktp_xyu3z3Q';
-							var map = L.mapbox.map('map', 'mapbox.streets')
-				    		.setView([40, -74.50], 3);
-							var myLocation = L.mapbox.featureLayer()
-							.loadURL ('/placess.json')
-							.addTo(map)
-					</script>
-				</body> -->
+			<!-- <head>
+				<meta charset=utf-8 />
+					<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+					<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+					<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+			</head>
+			<body>
+				<div id='map'></div>
+				<script>
+					L.mapbox.accessToken = 'pk.eyJ1IjoicmljaGFyZGxpbjMiLCJhIjoiOTM3NmRhZGI0ODY3ZWNiNTYwMjFhZjNiZDVjMzVmNDkifQ.AiyM9lt0c30Ktp_xyu3z3Q';
+						var map = L.mapbox.map('map', 'mapbox.streets')
+			    		.setView([40, -74.50], 3);
+						var myLocation = L.mapbox.featureLayer()
+						.loadURL ('/placess.json')
+						.addTo(map)
+				</script>
+			</body> -->
