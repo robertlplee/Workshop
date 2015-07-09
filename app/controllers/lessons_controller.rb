@@ -84,37 +84,10 @@ class LessonsController < ApplicationController
 		redirect_to @lesson
 	end
 
-	# def place
-	# 	@places = Place.all
- #  		@geojson = Array.new
-
- #  		@places.each do |place|
- #  		@geojson << {
- #  			type: 'Feature',
- #  			geometry:{
- #  				type: 'Point',
- #  				coordinates: [place.longitude, place.latitude]
- #  				},
- #  				properties: {
- #  					name: place.name,
- #  					address: place.street,
- #  					:'marker-color' => '#00607d',
- #      				:'marker-symbol' => 'circle',
- #     				:'marker-size' => 'medium'
- #  					}
- #  				}
- #  			end
- #  			respond_to do |format|
- #  				format.html
- #  				format.json { render json: @geojson } 
- #  			end
- #  		end
-
 	def add_student
 		@lesson = Lesson.find(params[:id])
 		@lesson.users << current_user
 		redirect_to @lesson
-
 	end
 
 	def roster

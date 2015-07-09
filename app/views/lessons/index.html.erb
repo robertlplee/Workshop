@@ -7,9 +7,7 @@
         <p><a class="btn btn-primary btn-large">Call to action!</a>
         </p>
     </header>
-
     <hr>
-
     <!-- Title -->
     <div class="row">
         <div class="col-lg-12">
@@ -17,10 +15,8 @@
         </div>
     </div>
     <!-- /.row -->
-
     <!-- Page Features -->
     <div class="row text-center">
-
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
                 <img src="http://placehold.it/800x500" alt="">
@@ -75,29 +71,24 @@
 
     </div>
     <!-- /.row -->
-
     <hr>
-
     <!-- Footer -->
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
+                <p>Copyright &copy; Your Website 2015</p>
             </div>
         </div>
     </footer>
 
 </div>
 <!-- /.container -->
-
 <%= form_tag lessons_search_path, method: :get do |f| %>
     <%= text_field :q, params[:q]  %>
     <%= submit_tag "Search" %>
 <% end %>
 
 <h1>All workshops</h1>
-
-
     <div class="row">
 
         <div class="col-md-3">
@@ -108,7 +99,6 @@
                 <a href="#" class="list-group-item">Category 3</a>
             </div>
         </div>
-
 
 <!-- Right -->
         <div class="col-md-9">
@@ -141,12 +131,9 @@
                         </a>
                     </div>
                 </div>
-
             </div>
-
 			<!-- row -->
             <div class="row">
-
     	    <% @lessons.each do |lesson| %>
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
@@ -169,11 +156,7 @@
                     </div>
                 </div>
             <% end %>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
