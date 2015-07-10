@@ -48,13 +48,8 @@
                     <li><a>Logged in as <%= current_user.email %></a></li>
 
                     <% else %>
-<<<<<<< HEAD
                         <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
                         <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-=======
-                    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-                    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
->>>>>>> 7d9e9f6b7a8461d76d3d31c954f60babd05c88ee
                     <% end %>
 
                 </ul>

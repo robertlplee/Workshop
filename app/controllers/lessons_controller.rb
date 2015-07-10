@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
 	
 
-	# before_action :authenticate_user!
+	before_action :authenticate_user!
 	# before_action :authorize_admin!, only: [:new, :destroy]
 
 	# before_action :authorize_admin!, only: [:new, :create, :destroy]

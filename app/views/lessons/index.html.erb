@@ -9,7 +9,7 @@
                 <p class="lead">Search for a workshop</p>
                 <div class="search_bar_index">
                     <%= form_tag lessons_search_path, method: :get do %>
-                        <%= text_field :q, params[:q]  %>
+                        <%= text_field_tag :q, params[:q]  %>
                         <%= submit_tag "Search" %>
                     <% end %>
                 </div>
