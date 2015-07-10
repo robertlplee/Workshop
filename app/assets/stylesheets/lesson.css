@@ -41,5 +41,21 @@
 {
 	position: relative;
 	padding-bottom: 10px;
+}
 
+.form
+{
+	margin-left: 400px;
+}
+.new
+{
+	margin-left: 380px;
+	font-size: 30px;
+}
+
+.max_height
+{
+	height: 60px;
+	display: block;
+	overflow: hidden;
 }

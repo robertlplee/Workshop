@@ -6,6 +6,7 @@
 
 	def show
 		@profile = Profile.find(params[:id])
+		@user = User.find(@profile.user)
 	end
 
 

@@ -85,10 +85,21 @@ profile = Profile.create([
 		education: "Brown University '17",
 		interests: "Singing, Design, Sociology",
 		user_id: 1
+	},{
+		name: "Richard Lin",
+		photo: "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xtp1/v/t1.0-9/11705122_10155909237030657_5487791262094936207_n.jpg?oh=1e91d264c5a32b1a3bdc82eda8f75830&oe=5625F5B9&__gda__=1445435772_28f00e7f42ff76b48bfdedefaf3edf03",
+		description: "A traveling student with many talents",
+		base: "Troy, Michigan",
+		education: "Wayne State University",
+		interests: "Long walks on the beach with deep life talks",
+		user_id: 2
 	}])
 
 user = User.create([
 	{
 		email: "robertlplee@gmail.com",
 		password: "tagnqe12"
+	},{
+		email: "rslin93@gmail.com",
+		password: "14213986AZ"
 	}])

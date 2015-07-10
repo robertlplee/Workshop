@@ -10,9 +10,5 @@
 .profile_show
 {
 	padding-top: 50px;
-
-}
-.profile_edit
-{
-	padding-top: 50px;
+	position: relative;
 }
