@@ -62,7 +62,6 @@
                         </p>
                     </div>
                 </div>
-
 							<!-- /details -->
 							<div class ="map">
 								<!-- <body> -->
@@ -71,9 +70,9 @@
 									L.mapbox.accessToken = 'pk.eyJ1IjoicmljaGFyZGxpbjMiLCJhIjoiOTM3NmRhZGI0ODY3ZWNiNTYwMjFhZjNiZDVjMzVmNDkifQ.AiyM9lt0c30Ktp_xyu3z3Q';
 									var map = L.mapbox.map('map', 'mapbox.streets')
 									.setView([-33.9253, 18.4239], 12);
-									// var jsonURL = "/lessons/" + "<%= escape_javascript(params[:id]) %>" + ".json";
+									// var jsonURL = "/lessons/" + "<%= escape_javascript(params[:id]) %>" + "/map.json";
 									var myLessons = L.mapbox.featureLayer()
-									.loadURL('/lessons.json')
+									.loadURL("<%= escape_javascript(map_lesson_path(@lesson, :format => :json))%>")
 									.addTo(map);
 								</script>
 	<!-- </body> -->

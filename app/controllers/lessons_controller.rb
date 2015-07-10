@@ -38,7 +38,6 @@ class LessonsController < ApplicationController
 			render :index
 		end
 
-
 		def new
 			@lesson = Lesson.new
 		end
@@ -84,26 +83,27 @@ class LessonsController < ApplicationController
 		@comment = @lesson.comments.build
 		@all_comments = @lesson.comments.reject(&:new_record?)
 		@profile = Profile.find(@lesson.host_id)
+	end
 
-		@places = Place.all
-  		@geojson = Array.new
+	def map
+		@lesson = Lesson.find(params[:id])
+		@geojson = Array.new
 
-  		@places.each do |place|
   		@geojson << {
   			type: 'Feature',
   			geometry:{
   				type: 'Point',
-  				coordinates: [place.longitude, place.latitude]
+  				coordinates: [@lesson.longitude, @lesson.latitude]
   				},
   				properties: {
-  					name: place.name,
-  					address: place.address,
+  					name: @lesson.name,
+  					address: @lesson.address,
   					:'marker-color' => '#00607d',
       				:'marker-symbol' => 'circle',
      				:'marker-size' => 'medium'
   					}
   				}
-		end
+
 		respond_to do |format|
 			format.html
 			format.json { render json: @geojson } 
