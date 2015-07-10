@@ -86,4 +86,8 @@ profile = Profile.create(
 	interests: "Long walks on the beach with deep life talks",
 })
 
+User.create!(
+	email: "rslin93@gmail.com",
+	password: "14213986AZ"
+	)
 
