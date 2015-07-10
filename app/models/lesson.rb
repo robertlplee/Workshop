@@ -10,7 +10,7 @@ class Lesson < ActiveRecord::Base
 
 
 	def self.search(query)
-  		where("name ILIKE ? or category ILIKE ? or location ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%") 
+  		where("name ILIKE ? or category ILIKE ? or address ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%") 
 	end
 
 
