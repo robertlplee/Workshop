@@ -10,14 +10,15 @@ lessons = Lesson.create([
 	{
 		StartTime: DateTime.new(2015,9,1,17,00),
 		EndTime: DateTime.new(2015,9,1,18,00),
-		location: "73 Kloof St, Gardens, Cape Town, 8001",
+		address: "73 Kloof St, Gardens, Cape Town, 8001",
 		category: "Arts",
 		name: "Painting",
 		price: 10.00,
 		capacity: 15,
-		description: "We will have materials available. Spend some time meeting new people and painting their faces!",
+		description: "Spend some time meeting new people and painting their faces!",
 		langauge: "English",
-		host_id: 1
+		host_id: 1,
+		image: "http://flinflononline.com/assets/images/painting%20workshop.JPG"
 	}, {
 		StartTime: DateTime.new(2014,9,1,13,00),
 		EndTime: DateTime.new(2015,9,1,15,00),
@@ -28,51 +29,56 @@ lessons = Lesson.create([
 		capacity: 20,
 		description: "All equipment will be provided, but bring cleats if you have them.",
 		langauge: "English",
-		host_id: 2
+		host_id: 2,
+		image: "http://media.tumblr.com/tumblr_m729okJuQG1qca68z.jpg"
 	}, {
 		StartTime: DateTime.new(2014,9,1,13,00),
 		EndTime: DateTime.new(2015,9,1,15,00),
-		location: "Rondebosch, Cape Town, 7700",
+		address: "Rondebosch, Cape Town, 7700",
 		category: "Education",
 		name: "Cape Townian Apartheid through Literature",
 		price: 0,
 		capacity: 16,
 		description: "Bring something to take notes.",
 		langauge: "English and Afrikaans",
-		host_id: 1
+		host_id: 1,
+		image: "http://oldnews.aadl.org/files/photos/N123_0150_001.jpg"
 	},{
 		StartTime: DateTime.new(2014,9,1,13,00),
 		EndTime: DateTime.new(2015,9,1,15,00),
-		location: "19 Park Rd, Cape Town, 8001",
+		address: "19 Park Rd, Cape Town, 8001",
 		category: "Education",
 		name: "Coding",
 		price: 30,
 		capacity: 20,
 		description: "Limitied computers so bring you own if you can.",
 		langauge: "C++",
-		host_id: 2
+		host_id: 2,
+		image: "https://i1.ytimg.com/vi/4a4TL0ixqlQ/maxresdefault.jpg"
 	},{
 		StartTime: DateTime.new(2014,9,1,13,00),
 		EndTime: DateTime.new(2015,9,1,15,00),
-		location: "68 Albert Road Woodstock Cape Town 7925",
+		address: "68 Albert Road Woodstock Cape Town 7925",
 		category: "Crafts",
 		name: "Sewing",
 		price: 2,
 		capacity: 12,
 		description: "Everything will be provided!",
 		langauge: "TBD",
-		host_id: 1
+		host_id: 1,
+		image: "http://www.bitsofthread.com/wp-content/gallery/general-pages/handsewingbasics.png"
 	},{
 		StartTime: DateTime.new(2014,9,1,13,00),
 		EndTime: DateTime.new(2015,9,1,15,00),
-		location: "31 Orange Street, Gardens, Cape Town",
+		address: "31 Orange Street, Gardens, Cape Town",
 		category: "Education",
 		name: "History",
 		price: 0,
 		capacity: 16,
 		description: "Come and learn about world history.",
 		langauge: "English",
-		host_id: 2
+		host_id: 2,
+		image: "http://www.portugal-villa.com/images_general/history%20photo%202.jpg"
 	}
 	])
 

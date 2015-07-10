@@ -24,7 +24,7 @@
 						<!-- right -->
 						<!-- map -->
 						<div class="thumbnail">
-							<img class="img-responsive" src="http://placehold.it/800x300" alt="">
+							<img class="img-responsive" src="<%=@lesson.image%>" alt="">
 							<!-- /map -->
 							<!-- details -->
 
@@ -47,7 +47,7 @@
 							<% end %>
 							<%= link_to "See registered roster", roster_lesson_path(@lesson) %>
 						</p>
-                       	<p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.location%>.</p>
+                       	<p>This workshop will be from <%=@lesson.StartTime%> to <%=@lesson.EndTime%> at <%=@lesson.address%>.</p>
                         <p><%= @lesson.description %></p>
                     </div>
                     <div class="ratings">

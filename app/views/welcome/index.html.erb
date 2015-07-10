@@ -29,7 +29,7 @@
             <% @featured_lessons.each do |lesson| %>
             <div class="col-md-3 col-sm-6 hero-feature">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/800x500" alt="">
+                    <img src="<%=lesson.image%>" alt="">
                     <div class="caption">
                         <p><%=lesson.name%></p>
                         <p>
