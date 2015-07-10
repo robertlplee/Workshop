@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do 
       get 'add_student'
       get 'roster'
+      get 'map', to: 'lessons#map'
     end
     resources :comments
   end
